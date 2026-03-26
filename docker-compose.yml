@@ -1,0 +1,11 @@
+services:
+  wol-client:
+    build: .
+    container_name: wake-on-lan
+    environment:
+      - MAC_ADDRESS=${MAC_ADDRESS}
+      - TARGET_IP=${TARGET_IP:-255.255.255.255}
+      - TARGET_PORT=${TARGET_PORT:-9}
+    # Le mode host est souvent nécessaire pour que le broadcast fonctionne correctement
+    network_mode: host
+    restart: no
